@@ -1,3 +1,4 @@
+import React from 'react'
 import {
   useAccount,
   useConnect,
@@ -7,11 +8,13 @@ import {
 } from 'wagmi'
 
 import Transaction from '../transaction/Transaction'
+
+import "./connectors.scss"
  
 export function Connectors() {
   const { address, connector, isConnected } = useAccount()
-  const { data: ensAvatar } = useEnsAvatar({ address: '0xA0Cf798816D4b9b9866b5330EEa46a18382f251e', })  
-  const { data: ensName } = useEnsName({ address })
+  // const { data: ensAvatar } = useEnsAvatar({ address: '0xA0Cf798816D4b9b9866b5330EEa46a18382f251e', })  
+  // const { data: ensName } = useEnsName({ address })
   const { connect, connectors, error, isLoading, pendingConnector } = useConnect()
   const { disconnect } = useDisconnect()
  
@@ -23,18 +26,23 @@ export function Connectors() {
   }
  
   return (
-    <div>
-      {connectors.map((connector) => (
-        <button
+    <div>           
+      {connectors.map((connector) => (                
+        <button        
+          className={isLoading ? "btn-connect isload" : "btn-connect"}
+          style={{"--clr": "#1149ff"} as React.CSSProperties}          
           disabled={!connector.ready}
           key={connector.id}
           onClick={() => connect({ connector })}
-        >
-          {connector.name}
-          {!connector.ready && ' (unsupported)'}
-          {isLoading &&
-            connector.id === pendingConnector?.id &&
-            ' (connecting)'}
+        >          
+          <span>{connector.name}</span>
+          <span className="ing-txt">
+            {!connector.ready && ' (unsupported)'}
+            {isLoading &&
+              connector.id === pendingConnector?.id &&
+              ' (connecting)'}             
+          </span>
+          <i></i>                          
         </button>
       ))}
  
