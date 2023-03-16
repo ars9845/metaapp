@@ -14,6 +14,7 @@ const { chains, provider, webSocketProvider } = configureChains(
   [infuraProvider({ apiKey: '0002457bd5404ab3a48c9f35b76a4eb6' }), publicProvider()],
 )
  
+console.log(chains);
 // Set up client
 const client = createClient({
   autoConnect: true,

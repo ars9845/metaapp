@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import {
   useAccount,
   useConnect,
@@ -16,9 +16,8 @@ export function Connectors() {
   // const { data: ensAvatar } = useEnsAvatar({ address: '0xA0Cf798816D4b9b9866b5330EEa46a18382f251e', })  
   // const { data: ensName } = useEnsName({ address })
   const { connect, connectors, error, isLoading, pendingConnector } = useConnect()
-  const { disconnect } = useDisconnect()
- 
   
+
   if (isConnected) {
     return (
       <Transaction />
@@ -26,7 +25,7 @@ export function Connectors() {
   }
  
   return (
-    <div>           
+    <div className="content">
       {connectors.map((connector) => (                
         <button        
           className={isLoading ? "btn-connect isload" : "btn-connect"}
@@ -47,7 +46,7 @@ export function Connectors() {
       ))}
  
       {error && <div>{error.message}</div>}
-    </div>
+    </div>              
   )
 }
 export default Connectors;
