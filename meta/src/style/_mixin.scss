@@ -1,0 +1,173 @@
+@mixin width-height($width, $height){
+    width:$width;
+    height:$height;
+}
+
+@mixin absolute-left-top($left, $top){
+    position: absolute;
+    left: $left;
+    top: $top;
+}
+
+@mixin absolute-right-top($right, $top){
+    position: absolute;
+    right: $right;
+    top: $top;    
+}
+
+@mixin absolute-left-bottom($left, $bottom){
+    position: absolute;
+    left: $left;
+    bottom: $bottom;    
+}
+
+@mixin absolute-right-bottom($right, $bottom){
+    position: absolute;
+    right: $right;
+    bottom: $bottom;    
+}
+
+// - applies to: flex containers
+// flex-start | flex-end | center | space-between | space-around 
+@mixin justify-content($value: flex-start) {
+    @if $value == flex-start {
+         -webkit-box-pack: start;
+            -moz-box-pack: start;
+            -ms-flex-pack: start;
+    } @else if $value == flex-end {
+         -webkit-box-pack: end;
+            -moz-box-pack: end;
+            -ms-flex-pack: end;
+    } @else if $value == space-between {
+         -webkit-box-pack: justify;
+            -moz-box-pack: justify;
+            -ms-flex-pack: justify;
+    } @else if $value == space-around {
+            -ms-flex-pack: distribute;
+    } @else {
+         -webkit-box-pack: $value;
+            -moz-box-pack: $value;
+            -ms-flex-pack: $value;
+    }
+    -webkit-justify-content: $value;
+            justify-content: $value;
+}
+
+@mixin background($img, $imgW, $imgH, $imgX, $imgY, $imgRepeat){
+    background-image: $img;
+    background-size: $imgW $imgH;
+    background-position: $imgX $imgY;
+    background-repeat: $imgRepeat; 
+}
+
+@mixin container($center: center) {
+	@include flex(column);
+	justify-content: $center;
+	height: calc(100vh - 60px);
+}
+
+@mixin bgOption($url) {
+	background-image: url($url);
+	background-size: 100% 100%;
+	background-position: 0 0;
+	background-repeat: no-repeat;
+}
+
+@mixin flex($direction: row) {
+	@each $prefix in -moz-, -o-, -webkit-, -ms-, '' {
+		display: #{$prefix}flex;
+	}
+	flex-direction: $direction;
+}
+
+@mixin grid($direction: row) {
+	@each $prefix in -moz-, -o-, -webkit-, -ms-, '' {
+		display: #{$prefix}grid;
+	}
+	flex-direction: $direction;
+}
+
+@mixin alignItems($direction: center) {
+	-moz-align-items: $direction;
+	-ms-align-items: $direction;
+	align-items: $direction;
+}
+// Cross-axis Alignment
+// - applies to: flex containers
+// flex-start | flex-end | center | baseline | stretch 
+@mixin align-items($value: stretch) {
+    @if $value == flex-start {
+         -webkit-box-align: start;
+            -moz-box-align: start;
+            -ms-flex-align: start;
+    } @else if $value == flex-end {
+         -webkit-box-align: end;
+            -moz-box-align: end;
+            -ms-flex-align: end;
+    } @else {
+         -webkit-box-align: $value;
+            -moz-box-align: $value;
+            -ms-flex-align: $value;
+    }
+    -webkit-align-items: $value;
+            align-items: $value;
+}
+
+
+@mixin btnClose {
+	width: 13px;
+	height: 13px;
+	@content;
+	@include bgOption('https://ac-usr-pt.s3.ap-northeast-2.amazonaws.com/userportal/main/contentsIcon/close_icon.png');
+	transition: all 0.3s;
+	&:hover {
+		transform: rotate(180deg);
+	}
+}
+
+@mixin popupLayer {
+	@keyframes layerFade {
+		from {
+			background: rgba(0, 0, 0, 0);
+			backdrop-filter: blur(0px);
+		}
+		to {
+			background: rgba(0, 0, 0, 0.5);
+			backdrop-filter: blur(1px);
+			transition: all 0.5s;
+		}
+	}
+	.popup_open {
+		position: fixed;
+		left: 0;
+		top: 0;
+		@include flex(column);
+		@include alignItems;
+		justify-content: center;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		z-index: 5;
+	}
+	.popup_layer {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.5);
+		backdrop-filter: blur(1px);
+		animation: layerFade 0.5s;
+		overflow: hidden;
+		z-index: 5;
+	}
+
+	.popup_wrap {
+		width: 392px;
+		height: 454px;
+		border-radius: 8px;
+		background: #f5f5f5;
+		border-radius: 8px;
+		box-shadow: 0 5px 25px 15px rgba(0, 0, 0, 0.5);
+		overflow: hidden;
+		z-index: 6;
+	}
+}

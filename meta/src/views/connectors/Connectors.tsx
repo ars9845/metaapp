@@ -10,7 +10,7 @@ import {
 import Transaction from '../transaction/Transaction'
 
 import "./connectors.scss"
- 
+
 export function Connectors() {
   const { address, connector, isConnected } = useAccount()  
   const { data: ensAvatar } = useEnsAvatar({ address })
