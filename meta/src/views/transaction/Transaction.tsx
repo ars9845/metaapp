@@ -4,6 +4,7 @@ import {
   usePrepareSendTransaction,
   useSendTransaction,
   useWaitForTransaction,  
+  useDisconnect
 } from 'wagmi'
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
 import QRCodeJs from '../qrcode/QRCodeJs';
@@ -23,6 +24,8 @@ export function Transaction() {
 
   const [qrOnOff, setQrOnOff] = useState(false);
   const [ethAddress, setEthAddress] = useState('');  
+
+  const { disconnect } = useDisconnect()
  
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {    
     const inputValue = event.target.value;
@@ -80,8 +83,7 @@ export function Transaction() {
 
   return (
      
-      <div className="trans-content">
-        
+      <div className="trans-content">        
         {qrOnOff && (
           <div className="qr-box">
             <QRCodeJs ethAddress={ethAddress} />          
@@ -138,6 +140,8 @@ export function Transaction() {
         </div>
         )}    
         
+
+        <button onClick={()=> disconnect()}>Disconnect</button>
     </div>    
   )
 }
