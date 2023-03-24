@@ -1,8 +1,8 @@
-## meta 
+### meta 
 Ethereum Connect react project
 
 
-#Installation
+## Installation
 <pre>
 <code>
 git clone https://github.com/ars9845/metaapp.git
@@ -14,7 +14,7 @@ npm start or npm run start
 </code>
 </pre>
 
-#Support
+## Support
 - <a href="https://wagmi.sh/" target="_blank">https://wagmi.sh/</a>
 <pre>
 <code>
