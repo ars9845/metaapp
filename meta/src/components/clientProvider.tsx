@@ -30,7 +30,7 @@ const clientProvider = createClient({
             options: {
               qrcode: true,             
             },
-          })
+        })
         
     ],
     provider,

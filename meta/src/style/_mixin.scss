@@ -171,3 +171,15 @@
 		z-index: 6;
 	}
 }
+
+// 미디어 쿼리 
+$breakpoint-mobile: 0px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1200px;
+$breakpoint-max: 1960px;
+@mixin mobile {
+    @media (min-width: #{$breakpoint-mobile}) and (max-width: #{$breakpoint-tablet - 1px}) {
+    // @media (max-width: 767px) {        
+        @content;
+    }
+}

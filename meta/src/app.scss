@@ -1,0 +1,108 @@
+@charset "utf-8";
+@import "@style/mixin";
+
+/************************************************************************
+* filename		: app.css
+* description	: app CSS import
+* date			: 2023.03.24
++ version		: v1.0
+************************************************************************/
+
+html, body {
+    width: 100%;
+    height: 100%;    
+}
+#root{
+    position: relative;
+    @include flex(flex);  
+    align-items: center;
+    justify-content: center;            
+    // min-height: 100vh;
+}
+.container{
+    position: relative;    
+    @include flex(column);
+    align-items: center;
+    justify-content: center;   
+    width:100%;             
+    margin: 0 auto 0;
+    .bg-gradients{
+        width: 100%;
+        height: 100%;
+        top: 0;
+        position: absolute;    
+        filter: blur(120px);
+        overflow-x: hidden;        
+        .purple{
+            position: absolute;
+            bottom:15%;
+            left:30%;
+            width: calc(5rem + 20vw);            
+            height: calc(5rem + 20vw);            
+            border-radius: 100px;
+            background-color: #f868ec;                                           
+        }
+        .orange{
+            position: absolute;
+            bottom:25%;
+            left:50%;
+            width: calc(5rem + 20vw);            
+            height: calc(5rem + 20vw);
+            border-radius: 100px;
+            background-color: #f98c2a;
+        }
+        .cyan{
+            position: absolute;
+            top:30%;left:-27%;
+            width: calc(5rem + 20vw);            
+            height: calc(5rem + 20vw);
+            transform:scale(1.5);
+            border-radius: 100px;
+            background-color: #00d1ea;
+        }
+        .cyan2{
+            position: absolute;
+            top:-10%;right:-28%;
+            width: calc(5rem + 20vw);            
+            height: calc(5rem + 20vw);
+            transform:scale(1.5);
+            border-radius: 100px;
+            background-color: #00d1ea;
+        }
+    }
+    .header-title{
+        @include flex(flex);
+        align-items: center;
+        justify-content: center;    
+        width: 100%;
+        height: 40px;
+        font-size: 14px;
+        font-weight: 400;
+        color: #050509;
+        @include background(url("./images/bg.png"), 
+        100%, 40px, 0, 0, no-repeat); 
+    }   
+    .title-box{
+        position: relative;
+        margin:100px 0 0 0;
+        line-height: 120px;
+        color: #000;
+        font-size: 35px;
+        font-weight: 500;
+    }
+    .footer{
+        position: fixed;
+        bottom: 0;
+        left:0;
+        @include flex(flex);
+        align-items: center;
+        justify-content: center;    
+        width: 100%;
+        height: 40px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #fff;
+        @include background(url("./images/bg.png"), 
+        100%, 40px, 0, 0, no-repeat); 
+    }
+}
