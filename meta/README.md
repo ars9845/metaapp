@@ -2,15 +2,20 @@
 Ethereum Connect react project
 
 
-#inatall
-Clone https://github.com/ars9845/metaapp.git
+#Installation
+<pre>
+<code>
+git clone https://github.com/ars9845/metaapp.git
 
 ex) cd meta
 c:\metaapp\meta> npm install
 
 npm start or npm run start
+</code>
+</pre>
 
-
+#Support
+- <a href="https://wagmi.sh/" target="_blank">https://wagmi.sh/</a>
 <pre>
 <code>
 1. Directory
